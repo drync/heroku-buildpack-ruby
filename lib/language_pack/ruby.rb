@@ -360,7 +360,11 @@ SHELL
     instrument 'ruby.install_ruby' do
       return false unless ruby_version
 
-      installer = LanguagePack::Installers::RubyInstaller.installer(ruby_version).new(@stack)
+      if ruby_version =~ /^2.1./
+        installer = LanguagePack::Installers::RubyInstaller.installer(ruby_version).new("cedar-14")
+      else
+        installer = LanguagePack::Installers::RubyInstaller.installer(ruby_version).new(@stack)
+      end
 
       if ruby_version.build?
         installer.fetch_unpack(ruby_version, build_ruby_path, true)
