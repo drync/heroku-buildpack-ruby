@@ -9,6 +9,8 @@ require "language_pack"
 
 DEFAULT_STACK = "cedar-14"
 
-installer    = LanguagePack::Installers::HerokuRubyInstaller.new(ENV['STACK'] || DEFAULT_STACK)
+# RUBY_STACK allows overriding the stack to pull an old version of ruby
+
+installer    = LanguagePack::Installers::HerokuRubyInstaller.new(ENV['RUBY_STACK'] || ENV['STACK'] || DEFAULT_STACK)
 ruby_version = LanguagePack::RubyVersion.new("ruby-#{LanguagePack::RubyVersion::DEFAULT_VERSION_NUMBER}")
 installer.fetch_unpack(ruby_version, ARGV[0])
