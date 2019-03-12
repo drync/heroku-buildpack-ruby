@@ -78,7 +78,7 @@ module LanguagePack
     # determines if a build ruby is required
     # @return [Boolean] true if a build ruby is required
     def build?
-      engine == :ruby && %w(1.8.7 1.9.2).include?(ruby_version)
+      engine == :ruby && %w(1.8.7 1.9.2 2.1.10).include?(ruby_version)
     end
 
     # convert to a Gemfile ruby DSL incantation
